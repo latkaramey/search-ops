@@ -23,8 +23,7 @@ const region = args[2]
 const kendra = new AWS.Kendra({
   accessKeyId,
   secretAccessKey,
-
-  region: 'us-east-1'
+  region: region
 });
 
 
