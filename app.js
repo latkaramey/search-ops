@@ -46,7 +46,7 @@ app.post('/search', (req, res) => {
   //res.redirect('/health_insurance_form_downloads.html');
 
   const params = {
-    IndexId: '5fdcaf10-f6a8-4468-abb5-6398a7d40611',
+    IndexId: '',
     QueryText: query
   };
 
