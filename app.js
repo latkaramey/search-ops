@@ -5,10 +5,14 @@ const AWS = require('aws-sdk');
 
 const app = express();
 
-const args = process.argv.slice(3);
+const args = process.argv.slice(2);
 console.log(args.length)
+console.log( args[0])
 
-if (args.length < 2) {
+console.log( args[1])
+console.log( args[2])
+console.log( args[3])
+if (args.length < 4) {
   console.error('Usage: node app.js ACCESS_KEY_ID SECRET_ACCESS_KEY');
   process.exit(1);
 }
@@ -19,6 +23,7 @@ if (args.length < 2) {
 const accessKeyId = args[0];
 const secretAccessKey = args[1];
 const region = args[2]
+const index = args[3]
 
 // Set up the Kendra client with credentials
 const kendra = new AWS.Kendra({
@@ -47,7 +52,7 @@ app.post('/search', (req, res) => {
   //res.redirect('/health_insurance_form_downloads.html');
 
   const params = {
-    IndexId: '',
+    IndexId:index,
     QueryText: query
   };
 
@@ -63,7 +68,7 @@ app.post('/search', (req, res) => {
       for (let i = 0; i < awsResponse.length; i++) {
 
         const response = awsResponse[i];
-        console.log(response);
+
         const obj = { url: response.DocumentURI, title: decodeURIComponent(response.DocumentTitle.Text), description: decodeURIComponent(response.DocumentExcerpt.Text) }
         results.push(obj);
       }
