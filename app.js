@@ -6,8 +6,9 @@ const AWS = require('aws-sdk');
 const app = express();
 
 const args = process.argv.slice(3);
+console.log(args.length)
 
-if (args.length < 3) {
+if (args.length < 2) {
   console.error('Usage: node app.js ACCESS_KEY_ID SECRET_ACCESS_KEY');
   process.exit(1);
 }
@@ -23,7 +24,7 @@ const region = args[2]
 const kendra = new AWS.Kendra({
   accessKeyId,
   secretAccessKey,
-  region: region
+  region
 });
 
 
