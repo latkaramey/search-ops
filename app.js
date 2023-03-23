@@ -7,11 +7,7 @@ const app = express();
 
 const args = process.argv.slice(2);
 console.log(args.length)
-console.log( args[0])
 
-console.log( args[1])
-console.log( args[2])
-console.log( args[3])
 if (args.length < 4) {
   console.error('Usage: node app.js ACCESS_KEY_ID SECRET_ACCESS_KEY');
   process.exit(1);
